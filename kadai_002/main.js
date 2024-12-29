@@ -29,9 +29,7 @@ const textLists = [
     'programming'
 ]
 
-const text = () => {
-    console.log('タイムアップ！');
-}
+
 
 //ランダムなテキストを表示　createText=関数（一連の処理をパッケージ化したもの）
 const createText = () => {
@@ -66,6 +64,9 @@ const keyPress = e => {
     score++
     wrap.classList.remove('mistyped');
     typed += untyped.substring(0, 1);
+    //↓のコードがなかったらどう動作するか（宿題12/29）
+    //substring=切り取る
+
     untyped = untyped.substring(1);
     typedfield.textContent = typed;
     untypedfield.textContent = untyped;
@@ -112,14 +113,14 @@ const rankCheck = score => {
 const gameOver = (id,text) => {
     clearInterval(id);
 
-    //textListsを消して「タイムアップ！」を表示する
-    typedfield.textContent.display = 'none';
-    untypedfield.textContent.display = 'none';
+    //textListsを消して「タイムアップ！」を表示する（もっとシンプルにできるか聞く）
+    //
+    typedfield.textContent = '';
     untypedfield.textContent = 'タイムアップ！';
 
     const result = setTimeout(()=> {
         confirm(rankCheck(score));
-    },10000);
+    },10);
 
     //okボタンをクリックされたらリロードする
     if(result == true) {
