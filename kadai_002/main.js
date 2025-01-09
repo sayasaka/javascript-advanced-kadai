@@ -27,7 +27,7 @@ const textLists = [
     'ECMAScript','console.log','for while if switch',
     'var let const','Windows Mac Linux iOS Android',
     'programming'
-]
+];
 
 
 
@@ -42,7 +42,7 @@ const createText = () => {
     let random = (Math.floor(Math.random()*textLists.length));
 
     //配列からランダムにテキストを取得し画面に表示する
-    untyped = textLists[random]
+    untyped = textLists[random];
     untypedfield.textContent = untyped;
 
 };
@@ -61,7 +61,7 @@ const keyPress = e => {
     }
 
     //正タイプの場合
-    score++
+    score++;
     wrap.classList.remove('mistyped');
     typed += untyped.substring(0, 1);
 
@@ -114,20 +114,18 @@ const rankCheck = score => {
 const gameOver = (id,text) => {
     clearInterval(id);
 
-    //textListsを消して「タイムアップ！」を表示する
-    typedfield.textContent = '';
-    untypedfield.textContent = 'タイムアップ！';
+//textListsを消して「タイムアップ！」を表示する
+typedfield.textContent = '';
+untypedfield.textContent = 'タイムアップ！';
 
-    const result = setTimeout(()=> {
-        confirm(rankCheck(score));
-    },10);
+    const result = setTimeout(() => {
+        confirm(rankCheck(score))},10);
 
-    
-    // OKボタンをクリックされたらリロードする
-  if(result == true) {
+     
+ // OKボタンをクリックされたらリロードする
+ if(result == true) {
     window.location.reload();
   }
-
     
 };
 
